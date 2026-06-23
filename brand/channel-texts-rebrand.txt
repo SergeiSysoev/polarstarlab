@@ -1,0 +1,73 @@
+PolarStar Lab — тексты канала + ребрендинг существующего YouTube-канала
+
+=== ИМЯ / ХЭНДЛ / ТЕГЛАЙН ===
+- Название канала:  PolarStar Lab   (PolarStar — одно слово, CamelCase)
+- Хэндл (везде):    @polarstarlab
+- Теглайн:          Your true north in the markets.
+
+=== ОПИСАНИЕ КАНАЛА (About) — вставить целиком, EN ===
+PolarStar Lab turns the liquidity-and-fractals method into a rules-based system you can test before you risk a dollar.
+
+I trade my own account on NinjaTrader 8 — I'm not a signal seller. On this channel I build setups from a small set of primitives (sweeps, retraces, displacement, breakouts), then back-test and optimize them on 15+ years of real S&P / MES data, and validate them out-of-sample before trusting them live.
+
+Proof, not promises. Every video shows the method, the numbers, and the honest out-of-sample result most vendors hide.
+
+What you get here:
+- A trading strategy + research lab for NinjaTrader 8
+- Liquidity + fractals, made systematic
+- Out-of-sample validation, position sizing, export back to NinjaTrader
+
+Website: polarstarlab.com (coming soon)
+Contact: hello@polarstarlab.com
+
+Not financial advice. Futures trading involves substantial risk of loss; hypothetical and back-tested results do not guarantee future performance. Not affiliated with or endorsed by NinjaTrader, LLC.
+
+=== КОРОТКОЕ BIO (X / Instagram / TikTok / LinkedIn) ~150 знаков ===
+Liquidity + fractals, made systematic. A trading strategy + research lab for NinjaTrader 8. Proof, not promises. Not financial advice.
+
+=== КЛЮЧЕВЫЕ СЛОВА (Settings -> Channel -> Keywords) ===
+NinjaTrader, NinjaTrader 8, liquidity, fractals, trading strategy, backtesting, strategy optimization, out-of-sample, futures trading, S&P 500, MES, ES futures, algorithmic trading, day trading, PolarStar Lab
+
+=== ССЫЛКИ (Basic info -> Links) ===
+Website  -> polarstarlab.com
+Email    -> hello@polarstarlab.com
+
+
+=== КАК ПОМЕНЯТЬ ВСЁ НА УЖЕ СОЗДАННОМ КАНАЛЕ ===
+Почти всё — в одном месте: studio.youtube.com -> слева "Customization / Настройка канала".
+Там 3 вкладки: LAYOUT (макет) / BRANDING (фирстиль) / BASIC INFO (осн. инфо).
+ВАЖНО: после правок жми "PUBLISH / Опубликовать" (вверху справа) — иначе не сохранится.
+
+1) АВАТАР
+   Customization -> BRANDING -> Picture -> Change -> загрузи avatar.png (800x800) -> подгони круг -> Done -> PUBLISH.
+
+2) ШАПКА (баннер)
+   BRANDING -> Banner image -> Change -> загрузи banner.png (2560x1440) -> проверь, что текст в "safe area" -> Done -> PUBLISH.
+
+3) ВОДЯНОЙ ЗНАК НА ВИДЕО
+   BRANDING -> Video watermark -> Upload -> watermark.png -> Display time: "Entire video" -> PUBLISH.
+
+4) НАЗВАНИЕ КАНАЛА
+   BASIC INFO -> Name -> впиши  PolarStar Lab  -> PUBLISH.   (лимит: до 3 смен имени за 14 дней)
+
+5) ХЭНДЛ (@)
+   BASIC INFO -> Handle -> впиши  polarstarlab  -> youtube.com/@polarstarlab -> PUBLISH.
+
+6) ОПИСАНИЕ
+   BASIC INFO -> Description -> вставь описание (см. выше) -> PUBLISH.
+
+7) ССЫЛКИ + КОНТАКТ
+   BASIC INFO -> Links -> Add link -> Website -> polarstarlab.com.
+   BASIC INFO -> Contact info / Email -> hello@polarstarlab.com.
+
+8) КЛЮЧЕВЫЕ СЛОВА + СТРАНА
+   Шестерёнка "Settings" (внизу слева) -> Channel -> Basic info -> Keywords (вставь список) + Country = United States.
+
+ПОМНИ:
+- Старые видео и подписчики остаются — ты только переодеваешь обложку канала.
+- Аватар/баннер обновляются не мгновенно — до нескольких часов.
+- Имя меняется ограниченно (3 раза/14 дней) — не дёргай туда-сюда.
+- Если канал "личный" (по твоему Google-аккаунту) — переименование в Customization всё равно работает.
+
+ДРУГИЕ ПЛОЩАДКИ (зеркалить тем же):
+X / Instagram / TikTok / GitHub / Telegram / LinkedIn -> имя "PolarStar Lab", @polarstarlab, тот же avatar.png, короткое bio. Баннеры под каждую соцсеть — другого размера, могу сделать отдельно.

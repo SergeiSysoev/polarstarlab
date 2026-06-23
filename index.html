@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PolarStar Lab — Liquidity + fractals, made systematic (NinjaTrader 8)</title>
+<meta name="description" content="A trading strategy and research lab for NinjaTrader 8. Build setups from liquidity and fractals, back-test on 15 years of data, and validate out-of-sample before you risk a dollar.">
+<meta property="og:title" content="PolarStar Lab — Your true north in the markets.">
+<meta property="og:description" content="Liquidity + fractals, made systematic. Strategy + research lab for NinjaTrader 8. Proof, not promises.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-118 -118 236 236'%3E%3Cpolygon points='0,-100 24,-24 100,0 24,24 0,100 -24,24 -100,0 -24,-24' fill='%2333C6B3'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --navy0:#0A1B34; --navy1:#13294A; --card:#10233f; --line:rgba(127,217,207,.14);
+    --teal:#33C6B3; --tealb:#49DBC6; --text:#EAF1F8; --muted:#93A7C4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    color:var(--text); background:var(--navy0); line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  .bg{position:fixed;inset:0;z-index:-1;
+    background:
+      radial-gradient(90% 70% at 50% -10%, #16335c 0%, rgba(10,27,52,0) 60%),
+      linear-gradient(180deg,#0A1B34 0%,#0c2042 100%);}
+  .bg::after{content:"";position:absolute;inset:0;opacity:.05;
+    background-image:linear-gradient(#7fd9cf 1px,transparent 1px),linear-gradient(90deg,#7fd9cf 1px,transparent 1px);
+    background-size:64px 64px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .star{width:1em;height:1em;vertical-align:-.14em;filter:drop-shadow(0 0 10px rgba(51,198,179,.5))}
+
+  /* nav */
+  header{padding:26px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:21px;letter-spacing:-.2px}
+  .brand .t{color:var(--teal)}
+  .badge{font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:rgba(51,198,179,.06)}
+
+  /* hero */
+  .hero{text-align:center;padding:64px 0 28px}
+  .hero .mark{font-size:78px;line-height:1;margin-bottom:18px}
+  h1{font-size:clamp(38px,7vw,68px);font-weight:800;letter-spacing:-1.2px;line-height:1.04}
+  h1 .t{color:var(--teal)}
+  .tag{font-size:clamp(18px,2.6vw,24px);color:var(--text);margin-top:16px;font-weight:500}
+  .sub{max-width:660px;margin:18px auto 0;color:var(--muted);font-size:clamp(15px,2vw,18px)}
+
+  /* email form */
+  .cta{max-width:520px;margin:34px auto 8px}
+  form{display:flex;gap:10px}
+  input[type=email]{flex:1;min-width:0;background:#0c1f3c;border:1px solid var(--line);color:var(--text);
+    border-radius:12px;padding:15px 16px;font-size:16px;outline:none}
+  input[type=email]::placeholder{color:#7388a8}
+  input[type=email]:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(51,198,179,.18)}
+  button{background:var(--teal);color:#06221d;border:0;border-radius:12px;padding:15px 22px;
+    font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap;transition:.15s}
+  button:hover{background:var(--tealb);transform:translateY(-1px)}
+  .note{color:var(--muted);font-size:13.5px;margin-top:12px;text-align:center}
+  .note a{color:#bfe9e1}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:56px 0 8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px}
+  .card .ic{font-size:26px;margin-bottom:12px}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* strip */
+  .strip{text-align:center;margin:64px 0 10px}
+  .strip .big{font-size:clamp(26px,4.6vw,40px);font-weight:800;letter-spacing:-.6px}
+  .strip .big .t{color:var(--teal)}
+  .strip p{color:var(--muted);max-width:620px;margin:14px auto 0;font-size:16px}
+  .links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .btn2{border:1px solid var(--line);color:var(--text);text-decoration:none;border-radius:12px;
+    padding:13px 20px;font-weight:600;font-size:15px;transition:.15s;background:rgba(255,255,255,.02)}
+  .btn2:hover{border-color:var(--teal);color:#fff}
+
+  /* footer */
+  footer{margin-top:72px;border-top:1px solid var(--line);padding:30px 0 48px;color:var(--muted);font-size:13.5px}
+  .frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+  footer a{color:#bfe9e1;text-decoration:none}
+  .disc{margin-top:18px;font-size:12px;color:#6f86a6;max-width:880px;line-height:1.55}
+
+  @media(max-width:720px){
+    .cards{grid-template-columns:1fr}
+    form{flex-direction:column}
+    .badge{display:none}
+    .hero{padding:40px 0 18px}
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="s" viewBox="-118 -118 236 236"><polygon points="0,-100 24,-24 100,0 24,24 0,100 -24,24 -100,0 -24,-24" fill="#33C6B3"/></symbol></svg>
+
+<div class="wrap">
+  <header>
+    <div class="nav">
+      <div class="brand"><svg class="star"><use href="#s"/></svg>PolarStar <span class="t">Lab</span></div>
+      <div class="badge">Launching soon</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="mark"><svg class="star"><use href="#s"/></svg></div>
+    <h1>PolarStar <span class="t">Lab</span></h1>
+    <div class="tag">Your true north in the markets.</div>
+    <p class="sub">A trading strategy and research lab for <strong>NinjaTrader&nbsp;8</strong>. Build setups from liquidity and fractals, back-test them on 15 years of data, and validate your edge out-of-sample — before you risk a dollar.</p>
+
+    <div class="cta">
+      <!-- TODO: replace the Formspree ID below with your own (see deploy notes). Until then, the email link under the form works. -->
+      <form action="https://formspree.io/f/REPLACE_FORM_ID" method="POST">
+        <input type="email" name="email" required placeholder="you@email.com" aria-label="Email">
+        <button type="submit">Get early access</button>
+      </form>
+      <div class="note">Be first to know when it launches. No spam — just the release and the free Liquidity&nbsp;+&nbsp;Fractals Playbook.<br>Prefer email? <a href="mailto:hello@polarstarlab.com?subject=Early%20access%20—%20PolarStar%20Lab">hello@polarstarlab.com</a></div>
+    </div>
+  </section>
+
+  <section class="cards">
+    <div class="card"><div class="ic"><svg class="star" style="width:26px;height:26px"><use href="#s"/></svg></div><h3>Composable setups</h3><p>Build any setup from eight market primitives — sweeps, retraces, displacement, breakouts — in any order.</p></div>
+    <div class="card"><div class="ic"><svg class="star" style="width:26px;height:26px"><use href="#s"/></svg></div><h3>15 years of data</h3><p>Back-test and optimize on real S&amp;P / MES history with a built-in optimization engine. One click, full metrics.</p></div>
+    <div class="card"><div class="ic"><svg class="star" style="width:26px;height:26px"><use href="#s"/></svg></div><h3>Honest by design</h3><p>Validate out-of-sample, size positions, and export straight back to NinjaTrader. Proof, not promises.</p></div>
+  </section>
+
+  <section class="strip">
+    <div class="big">Don't trust the backtest. <span class="t">Run the lab.</span></div>
+    <p>Most vendors show you a curve and hide the out-of-sample number. PolarStar Lab hands you the tool that produced it — so you prove the edge yourself.</p>
+    <div class="links">
+      <a class="btn2" href="https://www.youtube.com/@polarstarlab" target="_blank" rel="noopener">▶ YouTube · @polarstarlab</a>
+      <a class="btn2" href="#top">Get early access</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="frow">
+      <div><svg class="star" style="width:15px;height:15px"></svg> <strong>PolarStar Lab</strong> · an <a href="https://apluxor.com" target="_blank" rel="noopener">apluxor</a> project</div>
+      <div><a href="mailto:hello@polarstarlab.com">hello@polarstarlab.com</a> · <a href="https://www.youtube.com/@polarstarlab" target="_blank" rel="noopener">YouTube</a></div>
+    </div>
+    <div class="disc">Not financial advice. Trading futures involves substantial risk of loss and is not suitable for everyone. Hypothetical and back-tested results have inherent limitations and do not guarantee future performance. PolarStar Lab is a research and education tool, not a brokerage or signal service. Not affiliated with or endorsed by NinjaTrader,&nbsp;LLC. © 2026 PolarStar Lab.</div>
+  </footer>
+</div>
+</body>
+</html>
